@@ -4,6 +4,8 @@
 
 FOLDER_PATH=$1
 
+# BUILD=1
+
 echo "Changing directory to test directory $FOLDER_PATH"
 HOME_DIR=$(pwd)
 cd $HOME_DIR$(echo "/")$FOLDER_PATH
@@ -50,13 +52,13 @@ case $RUNTIME in
 		echo "Removing old binary"
 		rm $APP_NAME
 		;;
-	"runc" | "runsc")
-		#echo "Building $APP_NAME image"
-		#if [ $BUILD ]
-		#then 
-		#	echo "Executing: $BUILD_CMD"
-		#	$BUILD_CMD
-		#fi
+	"runc" | "runsc" | "kata")
+		echo "Building $APP_NAME image"
+		if [ $BUILD ]
+		then 
+			echo "Executing: $BUILD_CMD"
+			$BUILD_CMD
+		fi
 
 		echo "Running test on docker ($RUNTIME)"
 		Run_Docker_Container $RUNTIME $PARAMS >> $LOG_PATH
@@ -69,6 +71,7 @@ case $RUNTIME in
 		#	$RM_CMD
 		#fi
 		;;
+	
 	*)
 		echo "$RUNTIME is not a valid RUNTIME arg for $APP_NAME. Not executing test."
 		;;

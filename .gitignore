@@ -108,3 +108,6 @@ venv.bak/
 
 #result .csv
 #*.csv
+
+experiments/execute/read_throughput/file.txt
+experiments/execute/write_throughput/file.txt

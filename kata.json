@@ -1,0 +1,7 @@
+{
+	"runtimes": {
+		"kata": {
+			"path": "/snap/bin/kata-containers.runtime"
+		}
+	}
+}

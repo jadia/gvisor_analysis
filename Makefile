@@ -55,10 +55,10 @@ read_exp:
 test-all:
 	make clean
 	#make read_exp
-	make test-bare test-runc test-runsc-ptrace test-runsc-kvm
+	make test-bare test-runc test-runsc-ptrace test-runsc-kvm test-kata
 	#python3 parse.py
-	zip -r logs.zip logs/
-	echo "Message Body Here" | mutt -s "Read and Write Myapp" -a logs.zip -- "eyoung8@wisc.edu"
+	zip -r logs-$(date +%m%d%H%M%S).zip logs/
+	# echo "Message Body Here" | mutt -s "Read and Write Myapp" -a logs.zip -- "eyoung8@wisc.edu"
 
 
 test-bare:
@@ -68,6 +68,9 @@ test-email:
 	#$(shell echo "Message Body Here" | mutt -s "Subject Here" -a "./test.sh" eyoung8@wisc.edu)
 
 test-runc:
+	cp runc.json daemon.json
+	sudo mv daemon.json /etc/docker/
+	sudo systemctl restart docker
 	sudo bash run.sh runc configs/config.sh
 
 test-runsc-ptrace:
@@ -82,11 +85,18 @@ test-runsc-kvm:
 	sudo systemctl restart docker
 	sudo bash run.sh runsc configs/config.sh
 
+test-kata:
+	cp kata.json daemon.json
+	sudo mv daemon.json /etc/docker/
+	sudo systemctl restart docker
+	sudo bash run.sh kata configs/config.sh
+
 test-dev:
 	make clean
 	sudo bash run.sh bare configs/dev_config.sh
 	sudo bash run.sh runc configs/dev_config.sh
 	sudo bash run.sh runsc configs/dev_config.sh
+	sudo bash run.sh kata configs/dev_config.sh
 
 parse_logs:
 	python3 parse.py

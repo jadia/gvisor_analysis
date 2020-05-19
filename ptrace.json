@@ -3,8 +3,11 @@
 		"runsc": {
 			"runtimeArgs": [
 				"--platform=ptrace"
-				], 
-			"path": "/usr/local/bin/runsc"
+			],
+			"path": "/usr/bin/runsc"
+		},
+		"kata": {
+			"path": "/snap/bin/kata-containers.runtime"
 		}
 	}
 }

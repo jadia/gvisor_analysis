@@ -4,7 +4,7 @@
 			"runtimeArgs": [
 				"--platform=kvm"
 				], 
-			"path": "/usr/local/bin/runsc"
+			"path": "/usr/bin/runsc"
 		}
 	}
 }

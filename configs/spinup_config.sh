@@ -2,7 +2,7 @@
 
 #### Constants ####
 
-TEST_SPINUP_LIST=()
+# TEST_SPINUP_LIST=()
 
 TEST_FILE="test.sh"
 

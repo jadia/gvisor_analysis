@@ -14,7 +14,9 @@ echo "Test Suite Initializing..."
 echo "Copying test.sh and funcs.sh to all directories"
 echo experiments/*/*/ | xargs -n 1 cp test.sh
 echo experiments/*/*/ | xargs -n 1 cp funcs.sh
- 
+echo experiments/execute/memory_performance/*/ | xargs -n 1 cp test.sh
+echo experiments/execute/memory_performance/*/ | xargs -n 1 cp funcs.sh
+
 echo "Creating log directories and remove old logs"
 
 mkdir "logs/"
@@ -49,8 +51,8 @@ done
 
 echo "Deleting test.sh and funcs.sh from all directories"
 rm experiments/*/*/test.sh ; rm experiments/*/*/funcs.sh
+rm experiments/execute/memory_performance/*/test.sh; rm experiments/execute/memory_performance/*/funcs.sh
 rm experiments/import/*/test_config.sh
 rm experiments/spinup/*/test_config.sh
-
 
 echo "Test Suite Completed"

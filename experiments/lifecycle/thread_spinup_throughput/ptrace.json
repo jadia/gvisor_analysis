@@ -4,7 +4,7 @@
 			"runtimeArgs": [
 				"--platform=ptrace"
 				], 
-			"path": "/usr/local/bin/runsc"
+			"path": "/usr/bin/runsc"
 		}
 	}
 }

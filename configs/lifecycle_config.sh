@@ -2,7 +2,7 @@
 
 #### Constants ####
 
-TEST_LIFECYCLE_LIST=()
+# TEST_LIFECYCLE_LIST=()
 
 TEST_FILE="test.sh"
 
@@ -13,8 +13,14 @@ USAGE_CMD="sh test.sh <FOLDER_PATH> <APP_NAME> <RUNTIME> <NUM_THREADs> <NUM_TRIA
 THREAD_FOLDER_PATH="experiments/lifecycle/thread_spinup_throughput/"
 THREAD_APP_NAME="spinup"
 THREAD_SPINUP_NUM_THREADS=10
+#2
+#10
 THREAD_SPINUP_NUM_TRIALS=10
+#1
+#10
 THREAD_SPINUP_NUM_SPINUPS_PER_THREAD=10
+#1
+#10
 
 
 	# Generate list of tests
