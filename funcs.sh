@@ -68,7 +68,7 @@ Run_Docker_Container() {
         cmd="sudo docker run --runtime=$RUNTIME --rm --tmpfs /myapp $APP_NAME $PARAMS"
         platform=$(grep -w "platform" /etc/docker/daemon.json)
         echo "Platform: $platform"
-        echo "executing: $cmd"
+        echo "Executing: $cmd"
         $cmd
     fi
 }

@@ -70,24 +70,28 @@ test-email:
 test-runc:
 	cp runc.json daemon.json
 	sudo mv daemon.json /etc/docker/
+	sleep 10
 	sudo systemctl restart docker
 	sudo bash run.sh runc configs/config.sh
 
 test-runsc-ptrace:
 	cp ptrace.json daemon.json
 	sudo mv daemon.json /etc/docker/
+	sleep 10
 	sudo systemctl restart docker
 	sudo bash run.sh runsc configs/config.sh
 
 test-runsc-kvm:
 	cp kvm.json daemon.json
 	sudo mv daemon.json /etc/docker/
+	sleep 10
 	sudo systemctl restart docker
 	sudo bash run.sh runsc configs/config.sh
 
 test-kata:
 	cp kata.json daemon.json
 	sudo mv daemon.json /etc/docker/
+	sleep 10
 	sudo systemctl restart docker
 	sudo bash run.sh kata configs/config.sh
 

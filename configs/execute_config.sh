@@ -29,10 +29,10 @@ OPENCLOSE_TESTS=1
 # network_throughput
 NETWORK_FOLDER_PATH="experiments/execute/network_throughput/"
 NETWORK_APP_NAME="net"
-NETWORK_TRIALS=2
+NETWORK_TRIALS=10
 #1
 #10
-NETWORK_URL=("http://speedtest.wdc01.softlayer.com/downloads/test10.zip" "http://speedtest.wdc01.softlayer.com/downloads/test100.zip" "http://speedtest.wdc01.softlayer.com/downloads/test500.zip" "http://speedtest.wdc01.softlayer.com/downloads/test1000.zip")
+NETWORK_URL=("http://192.168.122.102/test10.zip" "http://192.168.122.102/test100.zip" "http://192.168.122.102/test500.zip" "http://192.168.122.102/test1000.zip")
 #(http://speedtest.wdc01.softlayer.com/downloads/test10.zip)
 #("http://speedtest.wdc01.softlayer.com/downloads/test10.zip" "http://speedtest.wdc01.softlayer.com/downloads/test100.zip" "http://speedtest.wdc01.softlayer.com/downloads/test500.zip" "http://speedtest.wdc01.softlayer.com/downloads/test1000.zip")
 
@@ -65,23 +65,23 @@ WRITE_TESTS=100
 generate_cmds() {
   	RUNTIME=$1
 
-	# Write throughput
-	for i in ${WRITE_WRITE_SIZE[@]}
-	do
-		for (( j=1; j <= $WRITE_TESTS; ++j ))
-		do
-			TEST_EXECUTE_LIST+=("$WRITE_FOLDER_PATH$TEST_FILE $WRITE_FOLDER_PATH $WRITE_APP_NAME $RUNTIME $WRITE_TRIALS $i $WRITE_FILE")
-		done
-	done
+	# # Write throughput
+	# for i in ${WRITE_WRITE_SIZE[@]}
+	# do
+	# 	for (( j=1; j <= $WRITE_TESTS; ++j ))
+	# 	do
+	# 		TEST_EXECUTE_LIST+=("$WRITE_FOLDER_PATH$TEST_FILE $WRITE_FOLDER_PATH $WRITE_APP_NAME $RUNTIME $WRITE_TRIALS $i $WRITE_FILE")
+	# 	done
+	# done
 
-	#Getpid_throughput
-	for i in ${GETPID_NUM_CALLS[@]}
-	do
-		for (( j=1; j <= $GETPID_TESTS; ++j ))
-		do
-			TEST_EXECUTE_LIST+=("$GETPID_FOLDER_PATH$TEST_FILE $GETPID_FOLDER_PATH $GETPID_APP_NAME $RUNTIME $i")
-		done
-	done
+	# #Getpid_throughput
+	# for i in ${GETPID_NUM_CALLS[@]}
+	# do
+	# 	for (( j=1; j <= $GETPID_TESTS; ++j ))
+	# 	do
+	# 		TEST_EXECUTE_LIST+=("$GETPID_FOLDER_PATH$TEST_FILE $GETPID_FOLDER_PATH $GETPID_APP_NAME $RUNTIME $i")
+	# 	done
+	# done
 	
 	#Network_throughput
 	for i in ${NETWORK_URL[@]}
@@ -89,18 +89,18 @@ generate_cmds() {
 		TEST_EXECUTE_LIST+=("$NETWORK_FOLDER_PATH$TEST_FILE $NETWORK_FOLDER_PATH $NETWORK_APP_NAME $RUNTIME $NETWORK_TRIALS $i")
 	done
 
-	# Open-Close
-	for (( j=1; j <= $OPENCLOSE_TESTS; ++j ))
-	do
-		TEST_EXECUTE_LIST+=("$OPENCLOSE_FOLDER_PATH$TEST_FILE $OPENCLOSE_FOLDER_PATH $OPENCLOSE_APP_NAME $RUNTIME $OPENCLOSE_TRIALS")
-	done
+	# # Open-Close
+	# for (( j=1; j <= $OPENCLOSE_TESTS; ++j ))
+	# do
+	# 	TEST_EXECUTE_LIST+=("$OPENCLOSE_FOLDER_PATH$TEST_FILE $OPENCLOSE_FOLDER_PATH $OPENCLOSE_APP_NAME $RUNTIME $OPENCLOSE_TRIALS")
+	# done
 
-	# Read_throughput
-	for i in ${READ_READ_SIZE[@]}
-	do
-		for (( j=1; j <= $READ_TESTS; ++j ))
-		do
-			TEST_EXECUTE_LIST+=("$READ_FOLDER_PATH$TEST_FILE $READ_FOLDER_PATH $READ_APP_NAME $RUNTIME $READ_TRIALS $i $READ_FILE")
-		done
-	done
+	# # Read_throughput
+	# for i in ${READ_READ_SIZE[@]}
+	# do
+	# 	for (( j=1; j <= $READ_TESTS; ++j ))
+	# 	do
+	# 		TEST_EXECUTE_LIST+=("$READ_FOLDER_PATH$TEST_FILE $READ_FOLDER_PATH $READ_APP_NAME $RUNTIME $READ_TRIALS $i $READ_FILE")
+	# 	done
+	# done
 }
