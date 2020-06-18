@@ -42,8 +42,10 @@ Run_Docker_Container() {
         elif [[ $FOLDER_PATH == *"thread"* ]]; then
         if [[ $PARAMS == *"ptrace"* ]]; then
             Setup_Ptrace
-            elif [[ $PARAMS == *"kvm"* ]]; then
+        elif [[ $PARAMS == *"kvm"* ]]; then
             Setup_KVM
+        elif [[  $PARAMS == *"kata"* ]]; then
+            Setup_kata
         fi
         echo "Special case for this test. It runs the docker containers internally"
         echo "Compiling $APP_NAME binary"
@@ -88,7 +90,7 @@ Setup_KVM() {
 }
 
 Setup_kata() {
-    echo "Setting up docker for gvisor-kvm"
+    echo "Setting up docker for gvisor-kata"
     cp kata.json daemon.json
     sudo mv daemon.json /etc/docker/
     sudo systemctl restart docker

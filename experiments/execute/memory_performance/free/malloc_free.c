@@ -36,8 +36,21 @@ float execute() {
 
         // Start timer
         struct timespec ts0;
-        clock_gettime(CLOCK_REALTIME, &ts0);
+        // Get started first
 
+        for (int i = 0; i < NUM_TRIALS; i++) {
+                //malloc
+                str = (char *) malloc(MALLOC_SIZE);
+                strcpy(str, "test");
+                if(strcmp(str,"test") != 0) {
+                        printf("ERROR: Failed to read from str\n");
+                        return 0;
+                }
+                //free
+                free(str);
+        }
+
+        clock_gettime(CLOCK_REALTIME, &ts0);
         for (int i = 0; i < NUM_TRIALS; i++) {
                 //malloc
                 str = (char *) malloc(MALLOC_SIZE);
@@ -74,7 +87,8 @@ int main(int argc, char *argv[]) {
 
         total = execute();
 
-        printf("LOG_OUTPUT: Average for %d trials: Open/close time average = %.12f seconds\n", NUM_TRIALS, total/NUM_TRIALS);
+        // printf("LOG_OUTPUT: Average for %d trials: Malloc time average = %.12f seconds\n", NUM_TRIALS, total/NUM_TRIALS);
+        printf("%.2f\n", (total/NUM_TRIALS)*1000000000);
 
         return 0;
 }

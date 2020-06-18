@@ -1,4 +1,5 @@
-# gvisor_analysis
+# Performance comparision of runc, gVisor and Kata containers
+
 A collection of programs used for benchmarking gVisor performance.
 
 # Experiment Guide
@@ -11,9 +12,12 @@ A collection of programs used for benchmarking gVisor performance.
 6) Container Spinup Speed
 7) Import Speed (Python)
 
-## Future
-* Google Cloud Functions performance
+## Structure
 
+### Files
+
+
+<!-- 
 # Installing
 
 To install all dependencies run the following command
@@ -43,4 +47,4 @@ $ make test-runc           # To execute tests only on docker's default runc runt
 $ make test-runsc-ptrace   # To execute tests only on gvisors runtime runsc using its ptrace platform
 
 $ make test-runsc-kvm      # To execute tests only on gvisors runtime runsc using its kvm platform
-```
+``` -->
